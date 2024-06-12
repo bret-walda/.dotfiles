@@ -3,7 +3,7 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 #simple info display in terminal
-neofetch
+fastfetch
 #vim like functionality in terminal
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -26,6 +26,7 @@ prompt redhat
 #
 #Makes the dirs and files a bit colourful.
 alias ls='ls --color=auto'
+alias eza='eza --colour=always --icons=always --no-time --grid'
 alias nv='nvim'
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 alias d='dwmswallow $WINDOWID;'
@@ -34,6 +35,9 @@ alias demacs='emacs --init-directory=.config/emacs'
 
 alias nvim-clean="NVIM_APPNAME=clvim nvim"
 alias nvim-chad="NVIM_APPNAME=cvim nvim"
+
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh)"
 
 function nvims() {
   items=("default" "clvim" "cvim")
