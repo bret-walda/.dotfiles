@@ -28,6 +28,7 @@ require('lspconfig')['clangd'].setup({})
 require('lspconfig')['hls'].setup({
     filetypes = {'haskell', 'lhaskell', 'cabal'},
 })
+require('lspconfig')['zls'].setup({})
 
 
 local cmp = require('cmp')

@@ -19,7 +19,7 @@ compinit
 autoload -Uz promptinit
 promptinit
 #End of the lines added by promptinstall
-#
+
 #sets the current prompt
 #
 prompt redhat
@@ -57,3 +57,5 @@ export JAVA_HOME=/usr/lib/jvm/java-22-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 
 [ -f "/home/bret/.ghcup/env" ] && . "/home/bret/.ghcup/env" # ghcup-env
+
+
