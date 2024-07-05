@@ -24,11 +24,16 @@ require('mason-lspconfig').setup({
     },
 })
 
+local nvim_lsp = require 'lspconfig'
 require('lspconfig')['clangd'].setup({})
 require('lspconfig')['hls'].setup({
     filetypes = {'haskell', 'lhaskell', 'cabal'},
+    root_dir = nvim_lsp.util.root_pattern("hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml"),
 })
 require('lspconfig')['zls'].setup({})
+require('lspconfig')['ocamllsp'].setup({
+    root_dir = nvim_lsp.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
+})
 
 
 local cmp = require('cmp')
@@ -42,7 +47,6 @@ cmp.setup({
         {name = 'buffer'},
         {name = 'path'},
         {name = 'nvim_lua'},
-        {name = "neorg"},
     },
     mapping = cmp.mapping.preset.insert({
 
