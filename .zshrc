@@ -52,7 +52,6 @@ function nvims() {
 }
 
 export PATH=$PATH:~/path
-export PATH=$PATH:~/path/zigcli/
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:~/.config/emacs/bin
 export JAVA_HOME=/usr/lib/jvm/java-22-openjdk
