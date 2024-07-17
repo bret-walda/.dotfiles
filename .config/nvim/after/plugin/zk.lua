@@ -22,11 +22,11 @@ require("zk").setup({
 
 local wk = require("which-key")
 
-wk.register({
-  z = {
-      name = "zk",
-      f = { "<cmd> ZkLinks <cr>", "Shows all the forward links"},
-      b = { "<cmd> ZkBacklinks <cr>", "Shows all the backward links"},
-      n = { "<cmd> ZkNotes <cr>", "Shows all the notes in the root"},
-  },
-}, { prefix = "<leader>" })
+wk.add({
+{
+    { "<leader>z", group = "zk" },
+    { "<leader>zb", "<cmd> ZkBacklinks <cr>", desc = "Shows all the backward links" },
+    { "<leader>zf", "<cmd> ZkLinks <cr>", desc = "Shows all the forward links" },
+    { "<leader>zn", "<cmd> ZkNotes <cr>", desc = "Shows all the notes in the root" },
+  }
+})

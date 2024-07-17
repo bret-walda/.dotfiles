@@ -13,12 +13,12 @@ vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true})
 
 local wk = require('which-key')
 
-wk.register({
-    c = {
-        "<cmd>cd %:p:h<cr>","change to current dir in nvim",
-        c = {"change this label"},
-    },
-}, { prefix = "<leader>"})
+wk.add({
+{
+    { "<leader>c", "<cmd>cd %:p:h<cr>", desc = "change to current dir in nvim" },
+    { "<leader>cc", desc = "change this label" },
+  }
+})
 
 -- Define continuous window resizing mappings
 vim.api.nvim_set_keymap('n', '<A-S-Left>', '<cmd>vertical resize +3<cr>', { noremap = true, silent = true })

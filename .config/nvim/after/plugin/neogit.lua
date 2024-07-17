@@ -3,9 +3,6 @@ neogit.setup {}
 
 
 local wk = require("which-key")
-wk.register({
-  g = {
-      name = "Neogit",
-      s = { "<cmd>Neogit<cr> ","Start Neogit" },
-  },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>gs", "<cmd>Neogit<cr>", desc = "Start Neogit", mode = "n"},
+})

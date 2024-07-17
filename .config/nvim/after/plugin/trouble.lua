@@ -184,16 +184,13 @@ local defaults = {
 require("trouble").setup(defaults)
 local wk = require("which-key")
 
-wk.register({
-  x = {
-      x = { "<cmd>Trouble diagnostics toggle<cr>","Diagnostics (Trouble)" },
-      X = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>","Buffer Diagnostics (Trouble)" },
-      L = { "<cmd>Trouble loclist toggle<cr>","Location List (Trouble)" },
-      Q = { "<cmd>Trouble qflist toggle<cr>","Quickfix List (Trouble)" },
-  },
-  c = {
-      s = { "<cmd>Trouble symbols toggle focus=false<cr>","Symbols (Trouble)" },
-      l = { "<cmd>Trouble lsp toggle focus=false win.position=right<cr>","LSP Definitions / references / ... (Trouble)" },
-  },
-
-}, { prefix = "<leader>" })
+wk.add({
+{
+    { "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP Definitions / references / ... (Trouble)" },
+    { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
+    { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+    { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+    { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+    { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+  }
+})

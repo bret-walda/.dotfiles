@@ -4,9 +4,9 @@ require("oil").setup({
 
 local wk = require("which-key")
 
-wk.register({
-  o = {
-     name = "Oil",
-     o = { "<cmd> Oil <cr>","Start Oil"},
-  },
-}, { prefix = "<leader>" })
+wk.add({
+{
+    { "<leader>o", group = "Oil" },
+    { "<leader>oo", "<cmd> Oil <cr>", desc = "Start Oil" },
+  }
+})

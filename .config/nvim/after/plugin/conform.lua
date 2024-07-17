@@ -4,7 +4,7 @@ require("conform").setup({
     -- Conform will run multiple formatters sequentially
     cpp = { "clang_format" },
 
-    zig = { "zig fmt" },
+    zig = { "zigfmt" },
 
     rust = { "rustfmt" },
     -- Use a sub-list to run only the first available formatter
