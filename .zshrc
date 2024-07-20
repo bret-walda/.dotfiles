@@ -53,6 +53,7 @@ function nvims() {
 
 export PATH=$PATH:~/path
 export PATH=$PATH:~/.cargo/bin/
+export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin/
 export PATH=$PATH:~/.config/emacs/bin
 export JAVA_HOME=/usr/lib/jvm/java-22-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
