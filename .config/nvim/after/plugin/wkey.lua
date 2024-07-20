@@ -18,27 +18,19 @@ local defaults = {
   spec = {},
   -- show a warning when issues were detected with your mappings
   notify = true,
-  -- Enable/disable WhichKey for certain mapping modes
-  modes = {
-    n = true, -- Normal mode
-    i = true, -- Insert mode
-    x = true, -- Visual mode
-    s = true, -- Select mode
-    o = true, -- Operator pending mode
-    t = true, -- Terminal mode
-    c = true, -- Command mode
-    -- Start hidden and wait for a key to be pressed before showing the popup
-    -- Only used by enabled xo mapping modes.
-    -- Set to false to show the popup immediately (after the delay)
-    defer = {
-      ["<C-V>"] = true,
-      V = true,
-      -- Defer certain operators. Only used for operator pending mode.
-      operators = {
-        -- d = true, -- defer delete
-      },
-    },
+  -- Which-key automatically sets up triggers for your mappings.
+  -- But you can disable this and setup the triggers manually.
+  -- Check the docs for more info.
+  ---@type wk.Spec
+  triggers = {
+    { "<auto>", mode = "nixsotc" },
   },
+  -- Start hidden and wait for a key to be pressed before showing the popup
+  -- Only used by enabled xo mapping modes.
+  ---@param ctx { mode: string, operator: string }
+  defer = function(ctx)
+    return ctx.mode == "V" or ctx.mode == "<C-V>"
+  end,
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -80,7 +72,6 @@ local defaults = {
   layout = {
     width = { min = 20 }, -- min and max width of the columns
     spacing = 3, -- spacing between columns
-    align = "left", -- align columns left, center or right
   },
   keys = {
     scroll_down = "<c-d>", -- binding to scroll down inside the popup
@@ -172,19 +163,10 @@ local defaults = {
   },
   show_help = true, -- show a help message in the command line for using WhichKey
   show_keys = true, -- show the currently pressed key and its label as a message in the command line
-  -- Which-key automatically sets up triggers for your mappings.
-  -- But you can disable this and setup the triggers yourself.
-  -- Be aware, that triggers are not needed for visual and operator pending mode.
-  triggers = true, -- automatically setup triggers
+  -- disable WhichKey for certain buf types and file types.
   disable = {
-    -- disable WhichKey for certain buf types and file types.
     ft = {},
     bt = {},
-    -- disable a trigger for a certain context by returning true
-    ---@type fun(ctx: { keys: string, mode: string, plugin?: string }):boolean?
-    trigger = function(ctx)
-      return false
-    end,
   },
   debug = false, -- enable wk.log in the current directory
 }
