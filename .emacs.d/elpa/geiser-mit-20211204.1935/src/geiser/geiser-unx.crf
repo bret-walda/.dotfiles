@@ -11,8 +11,6 @@ Free References:
       ("emacs")
   entity-procedure
       ("emacs")
-  entity?
-      ("emacs")
   environment->package
       ("emacs")
   environment-bindings
