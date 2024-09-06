@@ -26,6 +26,7 @@ require('mason-lspconfig').setup({
 
 local nvim_lsp = require 'lspconfig'
 require('lspconfig')['clangd'].setup({})
+require('lspconfig')['erlangls'].setup({})
 require('lspconfig')['hls'].setup({
     filetypes = {'haskell', 'lhaskell', 'cabal'},
     root_dir = nvim_lsp.util.root_pattern("hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml"),
