@@ -148,5 +148,8 @@ dependencies = {
 {
     "zk-org/zk-nvim",
 },
+{
+    "m4xshen/hardtime.nvim",
+},
 }
 require("lazy").setup(plugins, { defaults = {lazy = false,},})
