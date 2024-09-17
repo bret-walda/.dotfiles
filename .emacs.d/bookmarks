@@ -1,0 +1,19 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored"
+ (filename . "~/org/notes.org")
+ (front-context-string . "** TODO Read and")
+ (rear-context-string)
+ (position . 9)
+ (last-modified 26338 40961 454005 526000))
+("sicp"
+ (front-context-string . "\n1.1.1 Expressio")
+ (rear-context-string . ": 1-1,  Up: 1-1\n")
+ (position . 52332)
+ (last-modified 26337 38708 987001 97000)
+ (filename . "/usr/local/share/info/sicp")
+ (info-node . "1-1-1")
+ (handler . Info-bookmark-jump))
+)
