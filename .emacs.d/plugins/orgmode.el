@@ -3,7 +3,7 @@
 
 ;; Set the directory for your Org files
 (setq org-directory "~/org/")  ;; Change this to the directory where you store your Org files
-(setq org-agenda-files '("~/org"))
+(setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
 
 ;; Follow the links
 (setq org-return-follows-link  t)
