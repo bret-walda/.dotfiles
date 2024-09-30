@@ -1,0 +1,10 @@
+(require 'parinfer-rust-mode)
+
+;;(add-hook 'emacs-lisp-mode-hook #'parinfer-rust-mode)
+(add-hook 'lisp-mode-hook #'parinfer-rust-mode)
+(add-hook 'scheme-mode-hook #'parinfer-rust-mode)
+
+(setq parinfer-rust-auto-download t)
+
+
+
