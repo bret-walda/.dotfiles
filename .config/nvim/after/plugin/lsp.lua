@@ -1,19 +1,12 @@
-local lsp = require('lsp-zero')
-lsp.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp.default_keymaps({buffer = bufnr})
-end)
-
+local capabilities = require('blink.cmp').get_lsp_capabilities()
+local lspconfig = require('lspconfig')
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {},
     handlers = {
-        lsp.default_setup,
         lua_ls = function()
-            local lua_opts = lsp.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
+            require('lspconfig').lua_ls.setup({})
         end,
         rust_analyzer = function()
             require('lspconfig').rust_analyzer.setup({})
@@ -24,49 +17,22 @@ require('mason-lspconfig').setup({
     },
 })
 
-local nvim_lsp = require 'lspconfig'
-require('lspconfig')['clangd'].setup({})
-require('lspconfig')['erlangls'].setup({})
-require('lspconfig')['hls'].setup({
+lspconfig['clangd'].setup({capabilities = capabilities})
+lspconfig['erlangls'].setup({})
+lspconfig['hls'].setup({
     filetypes = {'haskell', 'lhaskell', 'cabal'},
-    root_dir = nvim_lsp.util.root_pattern("hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml"),
+    root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml"),
 })
-require('lspconfig')['zls'].setup({})
-require('lspconfig')['ocamllsp'].setup({
-    root_dir = nvim_lsp.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
+lspconfig['zls'].setup({})
+lspconfig['ocamllsp'].setup({
+    root_dir = lspconfig.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
 })
 
-
-local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-
-cmp.setup({
+require('blink.cmp').setup({
+    keymap = { preset = 'enter' },
     sources = {
-        {name = 'nvim_lsp'},
-        {name = 'luasnip'},
-        {name = 'buffer'},
-        {name = 'path'},
-        {name = 'nvim_lua'},
+       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
-    mapping = cmp.mapping.preset.insert({
-
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
-
-    ['<C-Space>'] = cmp.mapping.complete(),
-
-    ['<Tab>'] = cmp_action.luasnip_supertab(),
-    ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-
-
-    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-
-
-    }),
 })
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)

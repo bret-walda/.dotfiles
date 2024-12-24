@@ -55,20 +55,14 @@ local plugins = {
       version = "*",
   },
 {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v3.x',
+  'saghen/blink.cmp',
+  version = '*',
 dependencies = {
     -- LSP Support
     --
     {'neovim/nvim-lspconfig'},
-    {'hrsh7th/nvim-cmp'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'saadparwaiz1/cmp_luasnip'},
     {'rafamadriz/friendly-snippets'},
     {'L3MON4D3/LuaSnip'},
-    {'hrsh7th/cmp-buffer'},
-    {'hrsh7th/cmp-path'},
-    {'hrsh7th/cmp-nvim-lua'},
     {'williamboman/mason.nvim'},
     {'williamboman/mason-lspconfig.nvim'},
 
