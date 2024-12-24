@@ -14,6 +14,16 @@
 (register-definition-prefixes "parinfer-rust-changes" '("parinfer-rust--"))
 
 
+;;; Generated autoloads from parinfer-rust-flycheck.el
+
+(register-definition-prefixes "parinfer-rust-flycheck" '("parinfer-rust--flycheck-start"))
+
+
+;;; Generated autoloads from parinfer-rust-flymake.el
+
+(register-definition-prefixes "parinfer-rust-flymake" '("parinfer-rust-"))
+
+
 ;;; Generated autoloads from parinfer-rust-helper.el
 
 (register-definition-prefixes "parinfer-rust-helper" '("parinfer-rust-"))
@@ -48,6 +58,8 @@ evaluate `parinfer-rust-mode'.
 
 The mode's hook is called both when the mode is enabled and when
 it is disabled.
+
+\\{parinfer-rust-mode-map}
 
 (fn &optional ARG)" t)
 (register-definition-prefixes "parinfer-rust-mode" '("parinfer-rust-"))

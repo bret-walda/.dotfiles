@@ -4,7 +4,8 @@
 
 ;; Author: Justin Barclay <justinbarclay@gmail.com>
 ;; URL: https://github.com/justinbarclay/parinfer-rust-mode
-;; Version: 0.9.3
+;; Package-Version: 20241108.1719
+;; Package-Revision: 044c3fe8f68e
 ;; Package-Requires: ((emacs "26.1") (track-changes "1.1"))
 ;; Keywords: lisp tools
 
@@ -407,6 +408,12 @@ See `parinfer-rust--option-type' for a more complete explanation of the options.
 (require 'subr-x)
 (require 'font-lock)
 
+(with-eval-after-load 'flycheck
+  (require 'parinfer-rust-flycheck))
+
+(with-eval-after-load 'flymake
+  (require 'parinfer-rust-flymake))
+
 (defconst parinfer-rust--mode-types '("indent" "smart" "paren")
   "The different modes that parinfer can operate on.")
 
@@ -457,7 +464,7 @@ command should be run in.")
 ;; Local State
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar-local parinfer-rust--in-debug nil
-  "When enabled, outputs the response input and output of the parinfer response to a file.")
+  "When enabled, writes the input and output of the parinfer response to a file.")
 (defvar-local parinfer-rust--mode "paren"
   "The current mode that parinfer running under to managing your parenthesis.
 
@@ -582,7 +589,9 @@ CHANGES."
       (let* ((parinfer-rust--mode
               (if-let ((mode
                         (and (string= "smart" parinfer-rust--mode)
-                             (alist-get this-command parinfer-rust-treat-command-as))))
+                             (alist-get (or this-command
+                                            last-command)
+                                        parinfer-rust-treat-command-as))))
                   (progn
                     ;; By saying a command should run under another mode, we're
                     ;; going to simplify parinfer-rust's behavior and clear all
@@ -618,10 +627,16 @@ CHANGES."
         (when (and (local-variable-if-set-p 'parinfer-rust--in-debug)
                    parinfer-rust--in-debug)
           (parinfer-rust-debug "./parinfer-rust-debug.txt" options answer))
-        (if parinfer-error
+        (setq parinfer-rust--error parinfer-error)
+        ;; If we have an error and are not being reported by a backend, warn the user
+        (if (and parinfer-error
+                 (not (and (boundp 'flycheck-mode)
+                           (memq 'parinfer-rust flycheck--automatically-enabled-checkers)))
+                 (not (and (boundp 'flymake-mode)
+                          (memq 'parinfer-rust-flymake (flymake-reporting-backends)))))
             (message "Problem on line %s: %s"
              (plist-get parinfer-error :line_no)
-             (plist-get parinfer-error :message)) ;; TODO - Handler errors
+             (plist-get parinfer-error :message))
           ;; This stops Emacs from flickering when scrolling
           (if (not (string-equal parinfer-rust--previous-buffer-text replacement-string))
               (save-mark-and-excursion
@@ -637,7 +652,7 @@ CHANGES."
                         (progn
                           (delete-region (point-min) (point-max))
                           (insert-buffer-substring new-buf))
-                      (setq was-replaced-safely-safely (replace-buffer-contents new-buf 1)))
+                      (setq was-replaced-safely (replace-buffer-contents new-buf 1)))
                     (when (and (not was-replaced-safely)
                                (not (= window-start-pos (window-start))))
                       ;; If the buffer is not pixel aligned, this will cause a slight jump. But if
