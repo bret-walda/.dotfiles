@@ -29,7 +29,14 @@ lspconfig['ocamllsp'].setup({
 })
 
 require('blink.cmp').setup({
-    keymap = { preset = 'enter' },
+    keymap = {
+        preset = 'enter',
+        ['<Tab>'] = { 'select_next', 'fallback'},
+        cmdline = {
+            preset = "enter",
+            ['<Tab>'] = { 'select_next', 'fallback'},
+        },
+    },
     sources = {
        default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
