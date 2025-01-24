@@ -29,6 +29,10 @@ lspconfig['ocamllsp'].setup({
 })
 
 require('blink.cmp').setup({
+    completion = {
+        keyword = { range = 'full' },
+        list = { selection = { preselect = true, auto_insert = true } },
+    },
     keymap = {
         preset = 'enter',
         ['<Tab>'] = { 'select_next', 'fallback'},
@@ -39,6 +43,7 @@ require('blink.cmp').setup({
     },
     sources = {
        default = { 'lsp', 'path', 'snippets', 'buffer' },
+       cmdline = { 'cmdline', 'path' },
     },
 })
 
