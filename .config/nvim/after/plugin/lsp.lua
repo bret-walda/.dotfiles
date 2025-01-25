@@ -11,8 +11,8 @@ require('mason-lspconfig').setup({
         rust_analyzer = function()
             require('lspconfig').rust_analyzer.setup({})
         end,
-        cmake = function()
-            require('lspconfig').cmake.setup({})
+        neocmake = function()
+            require('lspconfig').neocmake.setup({})
         end,
     },
 })
