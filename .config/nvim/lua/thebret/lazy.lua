@@ -144,5 +144,11 @@ dependencies = {
 {
     "cbochs/grapple.nvim",
 },
+{
+    "nyoom-engineering/oxocarbon.nvim",
+},
+{
+    "nvimtools/hydra.nvim",
+},
 }
 require("lazy").setup(plugins, { defaults = {lazy = false,},})
