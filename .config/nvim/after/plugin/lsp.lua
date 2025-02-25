@@ -35,16 +35,14 @@ require('blink.cmp').setup({
     },
     keymap = {
         preset = 'enter',
-        ['<Tab>'] = { 'select_next', 'fallback'},
-        cmdline = {
-            preset = "enter",
-            ['<Tab>'] = { 'select_next', 'fallback'},
-        },
+        ['<Tab>'] = { 'select_next', 'fallback' },
+    },
+    cmdline = {
+            sources = { 'cmdline', 'path' },
     },
     sources = {
-       default = { 'lsp', 'path', 'snippets', 'buffer' },
-       cmdline = { 'cmdline', 'path' },
-    },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+    }
 })
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
