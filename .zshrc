@@ -56,8 +56,15 @@ export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin/
 export PATH=$PATH:~/.config/emacs/bin
 export PATH=$PATH:~/.cache/rebar3/bin
+export PATH=$PATH:~/kertinstall/bin
+export PATH=$PATH:/usr/local/Gambit/bin
 export JAVA_HOME=/usr/lib/jvm/java-22-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
+
+export KERT_SHELL=/bin/sh
+export KERT_LIBDIR=/home/bret/kertinstall/share/kertex
+
+export PLAN9=/home/bret/plan9/plan9port
 
 [ -f "/home/bret/.ghcup/env" ] && . "/home/bret/.ghcup/env" # ghcup-env
 
