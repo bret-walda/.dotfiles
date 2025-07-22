@@ -62,9 +62,11 @@ export JAVA_HOME=/usr/lib/jvm/java-22-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 
 #------------------------------------KERTEX_RELATED-----------------------#
-export KERT_SHELL=/bin/sh
-export KERT_LIBDIR=/home/bret/kertinstall/share/kertex
+export KERTEX_SHELL=/bin/sh
+export KERTEX_LIBDIR=/home/bret/kertinstall/share/kertex
 export PATH=$PATH:~/ctans/dvi2tty/source/Work01/texk/dvi2tty
+export sys_httpc=curl
+export KERTEX_PKG_SRC_SRV=http://mirror.nyist.edu.cn/CTAN/
 
 #------------------------------------KERTEX_RELATED-----------------------#
 export PLAN9=/home/bret/plan9/plan9port

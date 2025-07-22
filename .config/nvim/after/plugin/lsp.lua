@@ -32,6 +32,11 @@ require('blink.cmp').setup({
     completion = {
         keyword = { range = 'full' },
         list = { selection = { preselect = true, auto_insert = true } },
+        menu = {
+            auto_show = false,
+        },
+        ghost_text = { enabled = true },
+
     },
     keymap = {
         preset = 'enter',
@@ -42,7 +47,7 @@ require('blink.cmp').setup({
     },
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
-    }
+    },
 })
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
