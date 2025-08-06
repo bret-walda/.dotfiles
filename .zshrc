@@ -69,7 +69,7 @@ export sys_httpc=curl
 export KERTEX_PKG_SRC_SRV=http://mirror.nyist.edu.cn/CTAN/
 
 #------------------------------------KERTEX_RELATED-----------------------#
-export PLAN9=/home/bret/plan9/plan9port
+export PATH=$PATH:/home/bret/plan9/plan9port/bin
 
 [ -f "/home/bret/.ghcup/env" ] && . "/home/bret/.ghcup/env" # ghcup-env
 
