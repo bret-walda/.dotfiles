@@ -150,5 +150,9 @@ dependencies = {
 {
     "nvimtools/hydra.nvim",
 },
+{
+    "dmtrKovalenko/fff.nvim",
+    build = "cargo build --release",
+},
 }
 require("lazy").setup(plugins, { defaults = {lazy = false,},})

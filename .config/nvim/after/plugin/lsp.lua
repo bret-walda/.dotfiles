@@ -35,7 +35,7 @@ require('blink.cmp').setup({
         menu = {
             auto_show = false,
         },
-        ghost_text = { enabled = true },
+        ghost_text = { enabled = false },
 
     },
     keymap = {
