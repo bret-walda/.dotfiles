@@ -1,0 +1,3 @@
+.config/vim/pack
+.emacs.d/eln-cache/
+.emacs.d/elpa/

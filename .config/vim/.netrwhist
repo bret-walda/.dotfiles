@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/bret/.config/inkscape'
+let g:netrw_dirhist_2='/etc/ld.so.conf.d'
+let g:netrw_dirhist_1='/usr/lib/ld.so.conf.d'

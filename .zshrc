@@ -65,6 +65,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 export KERTEX_SHELL=/bin/sh
 export KERTEX_LIBDIR=/home/bret/kertinstall/share/kertex
 export PATH=$PATH:~/ctans/dvi2tty/source/Work01/texk/dvi2tty
+export PATH=/home/bret/kertinstall/bin/kertex:$PATH
 export sys_httpc=curl
 export KERTEX_PKG_SRC_SRV=http://mirror.nyist.edu.cn/CTAN/
 
@@ -83,3 +84,6 @@ export PATH=$PATH:/home/bret/plan9/plan9port/bin
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/bret/.opam/opam-init/init.zsh' ]] || source '/home/bret/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig/
+export ACLOCAL_PATH=/home/bret/gnu-rel/gnulib/m4/
