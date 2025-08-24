@@ -1,4 +1,4 @@
-set number
+set number "--shows the current line number with respect to relative number otherwise the current line number becomes zero"
 set relativenumber
 
 filetype plugin indent on
